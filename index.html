@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>〇〇空手道場</title>
+  <title>空手道</title>
 
   <style>
     * {
@@ -61,6 +61,28 @@
       line-height: 1.8;
     }
 
+    /* 空手道場について */
+    .about {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-image {
+      flex: 1;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+
     /* 練習時間 */
     .practice {
       display: flex;
@@ -68,12 +90,83 @@
       flex-wrap: wrap;
     }
 
-    .practice div {
+    .practice-card {
       flex: 1;
       min-width: 200px;
       background-color: #f8eeee;
       padding: 20px;
       border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.3s;
+    }
+
+    .practice-card:hover {
+      border-color: #cc0000;
+      background-color: #f5dddd;
+    }
+
+    .practice-card h3 {
+      color: #8b0000;
+      margin-top: 0;
+    }
+
+    /* 練習内容 */
+    .practice-detail {
+      display: none;
+      margin-top: 15px;
+      padding: 15px;
+      background-color: white;
+      border-left: 4px solid #cc0000;
+      border-radius: 4px;
+    }
+
+    .practice-detail ul {
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+
+    /* 申し込みフォーム */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #440000;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 14px;
+      background-color: #8b0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #cc0000;
     }
 
     /* フッター */
@@ -101,70 +194,237 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* スマートフォン対応 */
+    @media (max-width: 600px) {
+      .about {
+        flex-direction: column;
+      }
+
+      .about-text,
+      .about-image {
+        width: 100%;
+      }
+
+      header h1 {
+        font-size: 26px;
+      }
+
+      .practice {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 
 <body>
 
+  <!-- ヘッダー -->
   <header>
     <h1>空手道</h1>
     <p>心・技・体を鍛える空手道場</p>
   </header>
 
+  <!-- メイン -->
   <main>
 
+    <!-- 空手道場について -->
     <section>
       <h2>空手道場について</h2>
-      <p>
-        空手道では、空手を通して礼儀や体力、
-        集中力を身につけることを目指しています。
-      </p>
-      <p>
-        初心者から経験者まで、年齢や経験に合わせて
-        楽しく練習することができます。
-      </p>
-       <img src="https://primary.jwwb.nl/public/u/s/s/temp-muoinickcgrgmdbutjvv/46ii8f/volwassenenkarte.jpeg" alt="サンプル">
+
+      <div class="about">
+
+        <div class="about-text">
+          <p>
+            空手道では、空手を通して礼儀や体力、
+            集中力を身につけることを目指しています。
+          </p>
+
+          <p>
+            初心者から経験者まで、年齢や経験に合わせて
+            楽しく練習することができます。
+          </p>
+        </div>
+
+        <div class="about-image">
+          <img
+            src="https://primary.jwwb.nl/public/u/s/s/temp-muoinickcgrgmdbutjvv/46ii8f/volwassenenkarte.jpeg"
+            alt="空手の練習風景">
+        </div>
+
+      </div>
     </section>
 
+    <!-- 練習時間 -->
     <section>
       <h2>練習時間</h2>
 
       <div class="practice">
-        <div>
+
+        <!-- 子どもクラス -->
+        <div
+          class="practice-card"
+          onclick="showPractice('children')">
+
           <h3>子どもクラス</h3>
           <p>毎週 月曜日・土曜日</p>
           <p>18:00 ～ 19:30</p>
+
+          <div
+            id="children"
+            class="practice-detail">
+
+            <strong>具体的な練習内容</strong>
+
+            <ul>
+              <li>準備運動・ストレッチ</li>
+              <li>基本的な構え方</li>
+              <li>突き・蹴りの基本練習</li>
+              <li>簡単な型の練習</li>
+              <li>ミットを使った練習</li>
+              <li>礼儀・挨拶の練習</li>
+            </ul>
+          </div>
+
         </div>
 
-        <div>
+        <!-- 一般クラス -->
+        <div
+          class="practice-card"
+          onclick="showPractice('adult')">
+
           <h3>一般クラス</h3>
           <p>毎週 月曜日・土曜日</p>
           <p>19:30 ～ 21:00</p>
+
+          <div
+            id="adult"
+            class="practice-detail">
+
+            <strong>具体的な練習内容</strong>
+
+            <ul>
+              <li>準備運動・ストレッチ</li>
+              <li>基本技・移動稽古</li>
+              <li>型の練習</li>
+              <li>ミット打ち</li>
+              <li>組手の練習</li>
+              <li>体力・筋力トレーニング</li>
+            </ul>
+          </div>
+
         </div>
+
       </div>
     </section>
 
+    <!-- 見学・体験 -->
     <section>
       <h2>見学・体験について</h2>
+
       <p>
         空手に興味がある方は、ぜひ一度道場へお越しください。
         見学や体験練習も受け付けています。
       </p>
+
       <p>
         初心者の方も大歓迎です！
       </p>
     </section>
 
+    <!-- 参加申し込み -->
+    <section>
+      <h2>参加申し込み</h2>
+
+      <p>
+        見学・体験をご希望の方は、以下のフォームからお申し込みください。
+      </p>
+
+      <form action="#" method="post">
+
+        <div class="form-group">
+          <label for="name">お名前</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="例：山田 太郎"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">メールアドレス</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="例：example@email.com"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">電話番号</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="例：090-1234-5678">
+        </div>
+
+        <div class="form-group">
+          <label for="class">参加希望クラス</label>
+
+          <select id="class" name="class">
+            <option value="">選択してください</option>
+            <option value="children">子どもクラス</option>
+            <option value="adult">一般クラス</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">お問い合わせ・ご質問</label>
+
+          <textarea
+            id="message"
+            name="message"
+            placeholder="見学・体験についての質問などをご記入ください"></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">
+          申し込む
+        </button>
+
+      </form>
+    </section>
+
   </main>
 
+  <!-- フッター -->
   <footer>
     <p>お問い合わせ：info@example.com</p>
+
     <p>
       <a href="https://twitter.com/" target="_blank">X</a>
       <a href="https://www.instagram.com/" target="_blank">Instagram</a>
       <a href="https://www.facebook.com/" target="_blank">Facebook</a>
     </p>
   </footer>
+
+
+  <!-- クラス詳細を表示するJavaScript -->
+  <script>
+    function showPractice(className) {
+
+      const detail = document.getElementById(className);
+
+      if (detail.style.display === "block") {
+        detail.style.display = "none";
+      } else {
+        detail.style.display = "block";
+      }
+
+    }
+  </script>
 
 </body>
 </html>
